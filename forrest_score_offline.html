@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Skor FORREST - Offline</title>
+</head>
+<body>
+  <h2>Skor FORREST</h2>
+
+  <form id="formForrest">
+    <label><input type="checkbox" id="anemia" /> Anemia</label><br/>
+    <label><input type="checkbox" id="paru" /> Gangguan Fungsi Paru</label><br/>
+    <label><input type="checkbox" id="vasoaktif" /> Penggunaan Vasoaktif</label><br/><br/>
+    <button type="button" onclick="hitungSkor()">Hitung Skor</button>
+  </form>
+
+  <h3>Hasil:</h3>
+  <div id="hasil"></div>
+
+  <script>
+    function hitungSkor() {
+      let skor = 0;
+      if (document.getElementById('anemia').checked) skor += 1;
+      if (document.getElementById('paru').checked) skor += 1;
+      if (document.getElementById('vasoaktif').checked) skor += 3;
+
+      const hasil = document.getElementById('hasil');
+      hasil.innerHTML = `Total Skor: <strong>${skor}</strong><br/>` +
+        (skor >= 4
+          ? '<span style="color:red;">RJP Berpotensi <strong>SIA-SIA</strong></span>'
+          : '<span style="color:green;">RJP Masih <strong>Memungkinkan</strong></span>');
+    }
+  </script>
+</body>
+</html>
